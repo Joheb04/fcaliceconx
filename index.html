@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Feliz cumpleaños mi Alice con x</title>
+<meta name="theme-color" content="#171A33">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Puntos de navegación (lado derecho) -->
+<nav class="puntos" aria-label="Ir a una pantalla" data-tone="dark">
+  <a href="#portada" aria-label="Portada" title="Portada"></a>
+  <a href="#historia" aria-label="Línea de tiempo" title="Línea de tiempo"></a>
+  <a href="#razones" aria-label="Tarjetas" title="Tarjetas"></a>
+  <a href="#tiempo" aria-label="Contador" title="Contador"></a>
+  <a href="#carta" aria-label="Carta" title="Carta"></a>
+  <a href="#sorpresa" aria-label="Sorpresa" title="Sorpresa"></a>
+</nav>
+
+<main>
+
+  <!-- ============ 1. PORTADA ============ -->
+  <section id="portada" class="panel panel--portada" data-tone="dark" aria-labelledby="titulo-portada">
+    <div class="estrellas" aria-hidden="true"></div>
+
+    <!-- Eclipse lunar + peluche de Itachi (debajo de la luna) -->
+    <div class="portada__arte" aria-hidden="true">
+      <img class="luna" src="img/luna-eclipse.png" alt="">
+      <img class="peluche" src="img/itachi.png" alt="">
+    </div>
+
+    <div class="portada__contenido">
+      <h1 id="titulo-portada" data-letras>Porque sé que este es un día especial para ti, te hice esto</h1>
+      <p class="portada__sub">Baja con calma muñeca. De: Jammes (H.T.). (Posdata: Tú dijiste sean creativos jaja)</p>
+    </div>
+
+    <a class="bajar" href="#historia" aria-label="Ir a la siguiente pantalla">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M6 9l6 6 6-6"/>
+      </svg>
+    </a>
+  </section>
+
+  <!-- ============ 2. LÍNEA DE TIEMPO ============ -->
+  <section id="historia" class="panel" data-tone="dark" aria-labelledby="titulo-historia">
+    <h2 id="titulo-historia">Recuerdos que tengo contigo que quiero agradecer</h2>
+
+    <div class="linea-wrap">
+      <img class="luffy" src="img/luffy.png" alt="" aria-hidden="true">
+
+      <ol class="linea">
+        <li class="hito" style="--n:0">
+          <span class="hito__fecha">Julio/Agosto? 2026 jajaj</span>
+          <h3>El mes que nos conocimos (no recuerdo la fecha jajaj)</h3>
+          <p>Pero creo recordar que te conocí con un: "No sé que pasó, pero tú solo respira" jajaa</p>
+        </li>
+        <li class="hito" style="--n:1">
+          <span class="hito__fecha">10 de agosto del 2026</span>
+          <h3>Sobreviviente al terremoto</h3>
+          <p>Celebramos tu supervivencia jajaja</p>
+        </li>
+        <li class="hito" style="--n:2">
+          <span class="hito__fecha">27-28 de agosto</span>
+          <h3>Día en que te perdiste el eclipse lunar</h3>
+          <p>Te lo perdiste, pero arriba te dejé una foto de él jajaj</p>
+        </li>
+        <li class="hito" style="--n:3">
+          <span class="hito__fecha">No se qué fecha de agosto o septiembre, dejémoslo en siempre jaja</span>
+          <h3>Gracias Alice con x (aunque aquí si te puedo llamar Alexa jajaj)</h3>
+          <p>Gracias por alegrar mis noches y mis días con tus locuras chica alegra y divertida...</p>
+        </li>
+        <li class="hito" style="--n:4">
+          <span class="hito__fecha">8 de septiembre</span>
+          <h3>Agradecido con ese día</h3>
+          <p>Gatita en celo jajaj</p>
+        </li>
+        <li class="hito" style="--n:5">
+          <span class="hito__fecha">Y hoy</span>
+          <h3>Seguimos aquí</h3>
+          <p>Yo con ganas de seguir conociéndote y tú, por tu apego evitativo, con ganas de dejarme de hablar jajaja</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ 3. TARJETAS ============ -->
+  <section id="razones" class="panel" data-tone="dark" aria-labelledby="titulo-razones">
+    <img class="mulan" src="img/mulan.png" alt="" aria-hidden="true">
+
+    <div class="razones__contenido">
+      <h2 id="titulo-razones">Cosas que he ido conociendo y admiro de ti</h2>
+      <p class="nota">Toca una tarjeta para darle la vuelta.</p>
+
+      <ul class="tarjetas">
+        <li>
+          <button type="button" class="tarjeta" aria-pressed="false">
+            <span class="tarjeta__cara tarjeta__frente">01. Tu forma de ser</span>
+            <span class="tarjeta__cara tarjeta__dorso">Cuando eres tú misma, cuando eres tierna y cuando eres sexy y atrevida jajaj, me gusta esas versiones de ti.</span>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="tarjeta" aria-pressed="false">
+            <span class="tarjeta__cara tarjeta__frente">02. Tu mirada</span>
+            <span class="tarjeta__cara tarjeta__dorso">Creo que siempre te lo he dicho, me encanta esa mirada…esa mirada que es tan difícil de ignorar.</span>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="tarjeta" aria-pressed="false">
+            <span class="tarjeta__cara tarjeta__frente">03. Tu locura</span>
+            <span class="tarjeta__cara tarjeta__dorso">Gracias por tus ocurrencias que siempre terminan haciéndonos reír y por la facilidad que tienes de mejorarme el día. Nunca sé con que vas a salir jajaj.</span>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="tarjeta" aria-pressed="false">
+            <span class="tarjeta__cara tarjeta__frente">04. La tranquilidad que das</span>
+            <span class="tarjeta__cara tarjeta__dorso">Tienes esa capacidad de hacer que cualquier momento se sienta tranquilo y a la vez divertido.</span>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="tarjeta" aria-pressed="false">
+            <span class="tarjeta__cara tarjeta__frente">05. La forma en que te esfuerzas</span>
+            <span class="tarjeta__cara tarjeta__dorso">De repente no lo notas, pero yo sí veo todo el esfuerzo que pones y admiro que siempre intentas dar lo mejor de ti.</span>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="tarjeta" aria-pressed="false">
+            <span class="tarjeta__cara tarjeta__frente">06. Cuando eres tú</span>
+            <span class="tarjeta__cara tarjeta__dorso">Cuando te olvidas de ser Alice y eres simplemente Alexa…</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ 4. CONTADOR ============ -->
+  <section id="tiempo" class="panel" data-tone="dark" aria-labelledby="titulo-tiempo">
+    <div class="tiempo__contenido">
+      <h2 id="titulo-tiempo">Desde que nos conocimos han pasado (creo xd)</h2>
+
+      <div class="contador" data-fecha="2026-08-15T00:00:00" role="timer">
+        <div><span data-unidad="dias">0</span><small>días</small></div>
+        <div><span data-unidad="horas">00</span><small>horas</small></div>
+        <div><span data-unidad="minutos">00</span><small>minutos</small></div>
+        <div><span data-unidad="segundos">00</span><small>segundos</small></div>
+      </div>
+
+      <p class="nota">No recuerdo la fecha exacta, pero quise ponerlo ya que aprendí a hacerlo jajaj</p>
+    </div>
+
+    <img class="flint" src="img/flint.png" alt="" aria-hidden="true">
+  </section>
+
+  <!-- ============ 5. CARTA ============ -->
+  <section id="carta" class="panel" data-tone="light" aria-labelledby="titulo-carta">
+    <article class="carta">
+      <h2 id="titulo-carta">FELIZ CUMPLEAÑOS N° ¿? (no me dijiste jajaja, pero creo que es N° 21)</h2>
+
+      <p class="carta__saludo">Mi psicóloga favorita,
+        mi masoquista favorita (masoquista moderada),
+        mi nerd favorita,
+        mi CULOmbiana favorita…
+      </p>
+
+      <p>Sé que este es un día muy especial para ti mi Alice con X… aunque aquí sí puedo llamarte Alexa jajaja.
+        Sé que casi nunca te lo digo, pero gracias por alegrar mis noches y mis días durante todo este tiempo que hemos pasado conversando, y de verdad, eso lo aprecio mucho bonita.
+      </p>
+
+      <p>Y ya hablando en serio…
+        Gracias por las conversaciones Alexa, y gracias por haber aparecido en mi vida.
+        Espero que hoy y mañana especialmente la pases increíble, que te consientan mucho y que tengas un cumpleaños tan bonito como tú.
+      </p>
+
+      <p>Feliz cumpleaños muñeca!!</p>
+
+      <p class="carta__gracias">Agradecimientos especiales:</p>
+      <p>1: A Luffy, gracias por distraerme y librarme de tanta tentación jajaj</p>
+      <p>2: Y sí jajaj esta era la cosa S E C R E T A que estaba haciendo</p>
+
+      <p class="firma">Atte: Jammes (H.T.)</p>
+    </article>
+
+    <img class="mushu" src="img/mushu.png" alt="" aria-hidden="true">
+  </section>
+
+  <!-- ============ 6. SORPRESA ============ -->
+  <section id="sorpresa" class="panel panel--sorpresa" data-tone="light" aria-labelledby="titulo-sorpresa">
+    <div class="sol" aria-hidden="true"></div>
+    <img class="lotso" src="img/lotso.png" alt="" aria-hidden="true">
+
+    <div class="sorpresa__contenido">
+      <h2 id="titulo-sorpresa">Y una última cosa</h2>
+      <button type="button" id="btn-sorpresa" class="boton" aria-controls="premio" aria-expanded="false">Abrir</button>
+
+      <div id="premio" class="cupon" tabindex="-1" hidden>
+        <p class="cupon__titulo">GRACIAS</p>
+        <p class="cupon__texto">por</p>
+        <p class="cupon__nota">Existir</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Visor de fotos ampliadas (para cuando agregues la galería: <img data-ampliar ...>) -->
+<dialog id="visor" aria-label="Foto ampliada">
+  <img src="" alt="">
+  <p></p>
+  <button type="button" class="visor__cerrar" aria-label="Cerrar">&times;</button>
+</dialog>
+
+<!-- Lienzo del confeti -->
+<canvas id="confeti" aria-hidden="true"></canvas>
+
+<script src="script.js"></script>
+</body>
+</html>

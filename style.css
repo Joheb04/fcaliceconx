@@ -1,0 +1,635 @@
+/* =========================================================
+   Página de regalo — estilos
+   Fuentes: Bricolage Grotesque (texto) + Caveat (a mano)
+   ========================================================= */
+
+:root {
+  --noche: #171A33;
+  --oro: #FFD27A;
+  --oro-claro: #FFE4A8;
+  --vino: #6d1230;
+  --ciruela: #3a1230;
+  --tinta: #2b1a3f;
+  --texto: #ffffff;
+  --fuente: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mano: "Caveat", "Segoe Print", "Bradley Hand", cursive;
+  --pad-x: clamp(1.25rem, 7vw, 6rem);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+  background: var(--noche);
+}
+
+body {
+  margin: 0;
+  font-family: var(--fuente);
+  font-optical-sizing: auto;
+  color: var(--texto);
+  background: var(--noche);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img { max-width: 100%; display: block; }
+[hidden] { display: none !important; }
+
+h1, h2, h3, p { margin: 0; }
+h1, h2 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; }
+
+:focus-visible { outline: 3px solid var(--oro); outline-offset: 3px; }
+
+/* ---------- Paneles ---------- */
+.panel {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(3.5rem, 9vh, 5.5rem) var(--pad-x);
+  padding-right: calc(var(--pad-x) + 1rem);
+  overflow: hidden;
+  isolation: isolate;
+  scroll-snap-align: start;
+}
+
+.panel h2 {
+  font-size: clamp(1.7rem, 3.4vw, 3rem);
+  max-width: 14em;
+}
+
+.nota {
+  font-size: clamp(.78rem, .9vw, .9rem);
+  opacity: .85;
+  line-height: 1.4;
+}
+
+/* ---------- Puntos de navegación ---------- */
+.puntos {
+  position: fixed;
+  right: clamp(.6rem, 1.6vw, 1.5rem);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  gap: .7rem;
+  color: #fff;
+  transition: color .4s ease;
+}
+.puntos a { color: inherit; }
+.puntos[data-tone="light"] { color: var(--tinta); }
+
+.puntos a {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  opacity: .6;
+  transition: opacity .3s ease, transform .3s ease, background-color .3s ease;
+}
+.puntos a::after { content: ""; position: absolute; inset: -9px; } /* zona táctil más grande */
+.puntos a:hover { opacity: 1; transform: scale(1.25); }
+.puntos a[aria-current="true"] { background: currentColor; opacity: 1; transform: scale(1.2); }
+
+/* =========================================================
+   1. PORTADA — negro → vino tinto, eclipse y Itachi
+   ========================================================= */
+.panel--portada {
+  /* Vino tinto de base y, encima, negro que se desvanece hacia abajo */
+  background:
+    linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, .82) 22%, rgba(0, 0, 0, 0) 100%),
+    var(--vino);
+}
+
+.estrellas { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.estrella {
+  position: absolute;
+  border-radius: 50%;
+  background: #fff;
+  opacity: .75;
+  animation: titilar var(--d, 4s) ease-in-out infinite alternate;
+  animation-delay: var(--r, 0s);
+}
+@keyframes titilar { from { opacity: .15; } to { opacity: .9; } }
+
+.portada__arte {
+  position: absolute;
+  z-index: 1;
+  right: clamp(3.5rem, 10vw, 10rem);
+  top: clamp(1.25rem, 6vh, 4rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(.5rem, 2vh, 1.25rem);
+  pointer-events: none;
+}
+.luna {
+  width: clamp(88px, 11vw, 175px);
+  height: auto;
+  filter: drop-shadow(0 0 28px rgba(255, 96, 60, .5));
+}
+.peluche {
+  height: clamp(150px, 31vh, 320px);
+  width: auto;
+  filter: drop-shadow(0 12px 22px rgba(0, 0, 0, .55));
+}
+
+.portada__contenido { position: relative; z-index: 2; }
+.portada__contenido h1 {
+  font-size: clamp(2.2rem, 4.7vw, 4.6rem);
+  max-width: 11.5em;
+}
+.portada__sub {
+  margin-top: clamp(1rem, 2.4vh, 1.75rem);
+  max-width: 24em;
+  font-size: clamp(.8rem, 1vw, .95rem);
+  line-height: 1.45;
+  color: rgba(255, 255, 255, .82);
+}
+
+/* letras del título (las crea script.js) */
+.pal { display: inline-block; white-space: nowrap; }
+.let {
+  display: inline-block;
+  animation: letra .8s cubic-bezier(.2, .7, .2, 1) backwards;
+  animation-delay: calc(var(--i) * 24ms + 250ms);
+}
+@keyframes letra { from { opacity: 0; transform: translateY(.4em); } }
+
+.bajar {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  bottom: 1.25rem;
+  translate: -50% 0;
+  color: #fff;
+  opacity: .8;
+  animation: rebote 2.4s ease-in-out infinite;
+}
+@keyframes rebote { 50% { transform: translateY(6px); } }
+
+/* =========================================================
+   2. LÍNEA DE TIEMPO — Luffy sentado sobre la línea
+   ========================================================= */
+#historia {
+  background: linear-gradient(160deg, #182a63 0%, #1b5288 52%, #176180 100%);
+}
+#historia h2 { margin-bottom: clamp(2rem, 5vh, 3.5rem); max-width: 11em; }
+
+.linea-wrap { position: relative; }
+
+.luffy {
+  position: absolute;
+  right: 1%;
+  bottom: 100%;
+  height: min(30vh, 270px);
+  width: auto;
+  margin-bottom: -2px;
+  pointer-events: none;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, .3));
+}
+
+.linea {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  row-gap: 2.25rem;
+}
+
+.hito {
+  position: relative;
+  padding: 1.5rem 1.25rem 0 0;
+  border-top: 1px solid rgba(255, 255, 255, .38);
+  transition: opacity .7s ease calc(var(--n) * .14s);
+}
+.hito::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 0;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--oro);
+  box-shadow: 0 0 0 4px rgba(255, 210, 122, .22);
+}
+.js #historia:not(.is-visible) .hito { opacity: 0; }
+
+.hito__fecha {
+  display: block;
+  margin-bottom: .35rem;
+  font-family: var(--mano);
+  font-weight: 700;
+  font-size: clamp(1.05rem, 1.25vw, 1.3rem);
+  line-height: 1.05;
+  color: var(--oro);
+}
+.hito h3 {
+  font-size: clamp(.9rem, 1.05vw, 1.05rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -.01em;
+}
+.hito p {
+  margin-top: .45rem;
+  font-size: clamp(.78rem, .88vw, .88rem);
+  line-height: 1.45;
+  color: rgba(255, 255, 255, .85);
+}
+
+/* =========================================================
+   3. TARJETAS — Mulán con fondo degradado
+   ========================================================= */
+#razones {
+  background:
+    radial-gradient(ellipse at 15% 82%, rgba(255, 224, 208, .42), transparent 44%),
+    linear-gradient(140deg, #2b1a45 0%, #6a2d63 48%, #b04a63 100%);
+}
+
+.mulan {
+  position: absolute;
+  z-index: 0;
+  left: clamp(.5rem, 2.5vw, 2.5rem);
+  bottom: 0;
+  height: min(64%, 430px);
+  width: auto;
+  filter: drop-shadow(0 10px 24px rgba(30, 5, 40, .45));
+  pointer-events: none;
+}
+
+.razones__contenido {
+  position: relative;
+  z-index: 1;
+  margin-left: clamp(7rem, 27vw, 23rem);
+}
+.razones__contenido h2 { max-width: 12em; }
+.razones__contenido .nota { margin: .9rem 0 1.5rem; }
+
+.tarjetas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(.75rem, 1.4vw, 1.25rem);
+  perspective: 1200px;
+}
+
+.tarjeta {
+  appearance: none;
+  display: block;
+  position: relative;
+  width: 100%;
+  height: clamp(8.75rem, 22vh, 11rem);
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform .65s cubic-bezier(.2, .7, .2, 1);
+}
+.tarjeta[aria-pressed="true"] { transform: rotateY(180deg); }
+
+.tarjeta__cara {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1rem 1.15rem;
+  border-radius: 18px;
+  text-align: center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: auto;
+}
+.tarjeta__frente {
+  font-weight: 700;
+  font-size: clamp(.95rem, 1.15vw, 1.1rem);
+  background: rgba(255, 255, 255, .15);
+  border: 1px solid rgba(255, 255, 255, .38);
+  backdrop-filter: blur(4px);
+  transition: background-color .25s ease;
+}
+.tarjeta:hover .tarjeta__frente { background: rgba(255, 255, 255, .24); }
+.tarjeta__dorso {
+  transform: rotateY(180deg);
+  font-size: clamp(.8rem, .95vw, .95rem);
+  line-height: 1.42;
+  color: #3a1a45;
+  background: #fff4ea;
+  border: 1px solid rgba(255, 255, 255, .8);
+}
+
+/* =========================================================
+   4. CONTADOR — cielo con nubes y Flint Lockwood
+   ========================================================= */
+#tiempo {
+  background:
+    radial-gradient(circle at 78% 26%, rgba(255, 244, 190, .6), transparent 38%),
+    linear-gradient(180deg, #155fae 0%, #2b86d1 58%, #58b0e6 100%);
+  text-shadow: 0 1px 14px rgba(8, 40, 95, .35);
+}
+
+/* banco de nubes en la parte baja */
+#tiempo::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -4%;
+  right: -4%;
+  bottom: -3%;
+  height: 26%;
+  background:
+    radial-gradient(circle at 8% 100%,  #fff 0 13%, transparent 13.4%),
+    radial-gradient(circle at 20% 100%, #f4f9ff 0 19%, transparent 19.4%),
+    radial-gradient(circle at 36% 100%, #fff 0 15%, transparent 15.4%),
+    radial-gradient(circle at 52% 100%, #f4f9ff 0 21%, transparent 21.4%),
+    radial-gradient(circle at 68% 100%, #fff 0 16%, transparent 16.4%),
+    radial-gradient(circle at 84% 100%, #f4f9ff 0 20%, transparent 20.4%),
+    radial-gradient(circle at 98% 100%, #fff 0 14%, transparent 14.4%);
+  opacity: .92;
+}
+/* nubes sueltas arriba */
+#tiempo::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 9% 3.2% at 14% 14%, rgba(255, 255, 255, .55), transparent 70%),
+    radial-gradient(ellipse 7% 2.6% at 40% 8%,  rgba(255, 255, 255, .4),  transparent 70%),
+    radial-gradient(ellipse 8% 3%   at 60% 20%, rgba(255, 255, 255, .35), transparent 70%);
+  pointer-events: none;
+}
+
+.tiempo__contenido { position: relative; z-index: 1; max-width: min(40rem, 44vw); }
+.tiempo__contenido h2 { max-width: 10em; }
+
+.contador {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: clamp(.75rem, 1.6vw, 1.75rem);
+  margin: clamp(1.25rem, 3vh, 2rem) 0 1.1rem;
+}
+.contador > div {
+  padding-left: clamp(.7rem, 1vw, 1rem);
+  border-left: 1px solid rgba(255, 255, 255, .55);
+}
+.contador span {
+  display: block;
+  font-size: clamp(2.2rem, 4.8vw, 4.4rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -.04em;
+  font-variant-numeric: tabular-nums;
+}
+.contador small {
+  display: block;
+  margin-top: .35rem;
+  font-size: .72rem;
+  opacity: .9;
+}
+
+.flint {
+  position: absolute;
+  z-index: 0;
+  right: clamp(1.5rem, 5vw, 5rem);
+  bottom: clamp(1.5rem, 6vh, 4rem);
+  width: clamp(280px, 44vw, 700px);
+  height: auto;
+  filter: drop-shadow(0 14px 22px rgba(6, 30, 80, .35));
+  pointer-events: none;
+}
+
+/* =========================================================
+   5. CARTA — fondo cálido y Mushu a la derecha
+   ========================================================= */
+#carta {
+  color: var(--tinta);
+  background:
+    radial-gradient(circle at 80% 56%, #fff5df 0%, rgba(255, 245, 223, 0) 46%),
+    linear-gradient(120deg, #fbd8bf 0%, #f6b791 62%, #ee9c76 100%);
+  text-shadow: none;
+}
+
+.carta { position: relative; z-index: 1; max-width: min(40rem, 100%); }
+.carta h2 {
+  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+  color: #3a1230;
+  margin-bottom: clamp(.9rem, 2vh, 1.4rem);
+}
+.carta p {
+  font-size: clamp(.9rem, 1.05vw, 1.08rem);
+  line-height: 1.55;
+  margin-top: .75rem;
+}
+.carta__saludo {
+  font-family: var(--mano);
+  font-weight: 700;
+  font-size: clamp(1.25rem, 1.7vw, 1.6rem) !important;
+  line-height: 1.15 !important;
+  color: #7a1f3d;
+}
+.carta__gracias { margin-top: 1.1rem !important; font-weight: 700; }
+.firma {
+  margin-top: 1.25rem !important;
+  font-family: var(--mano);
+  font-weight: 700;
+  font-size: clamp(1.4rem, 2vw, 1.9rem) !important;
+  color: #7a1f3d;
+}
+
+.mushu {
+  position: absolute;
+  z-index: 0;
+  right: clamp(2rem, 8vw, 9rem);
+  bottom: 4%;
+  height: min(80%, 580px);
+  width: auto;
+  filter: drop-shadow(0 12px 20px rgba(120, 40, 20, .3));
+  pointer-events: none;
+}
+
+/* =========================================================
+   6. SORPRESA — rosa fresa para Lotso
+   ========================================================= */
+#sorpresa {
+  color: var(--ciruela);
+  align-items: center;
+  text-align: center;
+  padding-right: clamp(1.5rem, 30vw, 30rem);
+  background: linear-gradient(135deg, #ffe9d4 0%, #ffc4d8 48%, #f48db6 100%);
+}
+
+.sol {
+  position: absolute;
+  z-index: -1;
+  right: -9vw;
+  bottom: -15vw;
+  width: clamp(320px, 46vw, 680px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff7e8 0%, #ffdcbc 58%, #ffc7a4 100%);
+  opacity: .9;
+}
+
+.lotso {
+  position: absolute;
+  z-index: 0;
+  right: clamp(1.5rem, 8vw, 9rem);
+  bottom: 0;
+  height: min(64%, 440px);
+  width: auto;
+  filter: drop-shadow(0 12px 20px rgba(110, 20, 70, .3));
+  pointer-events: none;
+}
+
+.sorpresa__contenido {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#sorpresa h2 { font-size: clamp(1.9rem, 4.2vw, 3.4rem); max-width: none; }
+
+.boton {
+  margin-top: 1.5rem;
+  padding: .85rem 2rem;
+  border: 0;
+  border-radius: 14px;
+  background: var(--ciruela);
+  color: var(--oro-claro);
+  font: 700 1rem/1 var(--fuente);
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(58, 18, 48, .28);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.boton:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(58, 18, 48, .32); }
+.boton:active { transform: translateY(0); }
+.boton[aria-expanded="true"] { display: none; }
+
+.cupon {
+  margin-top: 1.25rem;
+  padding: 1.5rem clamp(1.75rem, 4vw, 3rem);
+  background: #fffaf0;
+  border: 2px dashed #d3467f;
+  border-radius: 20px;
+  box-shadow: 0 14px 30px rgba(110, 20, 70, .22);
+  outline: none;
+  animation: cupon-in .7s cubic-bezier(.2, .8, .2, 1.15) backwards;
+}
+@keyframes cupon-in { from { opacity: 0; transform: scale(.7) rotate(-4deg); } }
+.cupon__titulo { font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 800; letter-spacing: -.03em; line-height: 1; color: #a3184f; }
+.cupon__texto  { font-family: var(--mano); font-weight: 700; font-size: 1.7rem; line-height: 1.1; }
+.cupon__nota   { font-size: clamp(1.7rem, 3.6vw, 2.6rem); font-weight: 800; letter-spacing: -.02em; line-height: 1.05; }
+
+/* ---------- Confeti y visor ---------- */
+#confeti {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 60;
+  pointer-events: none;
+}
+
+#visor {
+  max-width: min(92vw, 720px);
+  padding: 1rem;
+  border: 0;
+  border-radius: 16px;
+  background: #fff;
+  color: var(--tinta);
+  text-align: center;
+}
+#visor::backdrop { background: rgba(10, 8, 25, .75); }
+#visor img { max-height: 70vh; margin: 0 auto; border-radius: 10px; }
+#visor p { margin-top: .6rem; }
+.visor__cerrar {
+  position: absolute;
+  top: .4rem;
+  right: .6rem;
+  border: 0;
+  background: none;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  color: inherit;
+}
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+@media (max-width: 1100px) {
+  .linea { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .carta { max-width: none; }
+  .mushu {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    align-self: flex-end;
+    height: 170px;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 760px) {
+  .panel { padding-right: var(--pad-x); }
+  .puntos { gap: .55rem; }
+
+  /* Portada: el arte arriba a la derecha y el texto abajo */
+  .panel--portada { justify-content: flex-end; padding-bottom: 5rem; }
+  .portada__arte { right: 1.25rem; top: 1.25rem; }
+  .luna { width: 84px; }
+  .peluche { height: 150px; }
+  .portada__contenido h1 { font-size: clamp(2rem, 9vw, 2.8rem); }
+
+  /* Línea de tiempo vertical */
+  #historia h2 { margin-bottom: 1rem; }
+  .luffy { position: relative; right: auto; bottom: auto; display: block; height: 130px; margin: 0 0 .5rem auto; }
+  .linea { grid-template-columns: 1fr; row-gap: 0; }
+  .hito { padding: 0 0 1.5rem 1.5rem; border-top: 0; border-left: 1px solid rgba(255, 255, 255, .38); }
+  .hito::before { top: .25rem; left: -6px; }
+
+  /* Tarjetas */
+  .mulan { left: auto; right: 1rem; top: 1.25rem; bottom: auto; height: 120px; }
+  .razones__contenido { margin-left: 0; padding-top: 2rem; }
+  .razones__contenido h2 { max-width: calc(100% - 90px); }
+  .tarjetas { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tarjeta { height: 10.5rem; }
+
+  /* Contador */
+  .flint { position: relative; right: auto; bottom: auto; width: min(100%, 460px); margin: 1.5rem auto 0; }
+  .tiempo__contenido { max-width: none; }
+  .contador { flex-wrap: wrap; }
+  .contador span { font-size: clamp(2.2rem, 12vw, 3.2rem); }
+
+  /* Sorpresa */
+  #sorpresa { justify-content: flex-start; padding-top: 22vh; padding-bottom: 14rem; }
+  .lotso { right: 50%; translate: 50% 0; height: 200px; }
+  .sol { right: 50%; translate: 50% 0; bottom: -20vw; width: 90vw; }
+}
+
+@media (max-width: 480px) {
+  .tarjetas { grid-template-columns: 1fr; }
+  .tarjeta { height: 8.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
