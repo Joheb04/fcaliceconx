@@ -1,13 +1,11 @@
-/* =========================================================
-   Página de regalo — comportamiento
-   ========================================================= */
+/* PPP */
 (function () {
   "use strict";
 
   document.documentElement.classList.add("js");
   var reducirMovimiento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* ---------- 1. Estrellas de la portada ---------- */
+  /* 1. Portada */
   var cielo = document.querySelector(".estrellas");
   if (cielo) {
     var cantidad = window.innerWidth < 760 ? 60 : 130;
@@ -26,7 +24,7 @@
     cielo.appendChild(frag);
   }
 
-  /* ---------- 2. Título letra por letra (data-letras) ---------- */
+  /* 2. Título */
   document.querySelectorAll("[data-letras]").forEach(function (el) {
     var texto = el.textContent.trim();
     el.setAttribute("aria-label", texto);
@@ -48,7 +46,7 @@
     });
   });
 
-  /* ---------- 3. Puntos de navegación + aparición de paneles ---------- */
+  /* 3. Navegación */
   var nav = document.querySelector(".puntos");
   var enlaces = nav ? Array.from(nav.querySelectorAll("a")) : [];
   var paneles = Array.from(document.querySelectorAll(".panel"));
@@ -62,12 +60,12 @@
   }
 
   if ("IntersectionObserver" in window) {
-    // El panel que cruza la mitad de la pantalla es el activo
+    // Panel..
     var ioNav = new IntersectionObserver(function (entradas) {
       entradas.forEach(function (e) { if (e.isIntersecting) marcarActivo(e.target); });
     }, { rootMargin: "-50% 0px -50% 0px", threshold: 0 });
 
-    // Los paneles se marcan como visibles la primera vez que se ven (para la línea de tiempo)
+    // para la línea de tiempo
     var ioVer = new IntersectionObserver(function (entradas) {
       entradas.forEach(function (e) {
         if (e.isIntersecting) { e.target.classList.add("is-visible"); ioVer.unobserve(e.target); }
@@ -80,7 +78,7 @@
     if (paneles[0]) marcarActivo(paneles[0]);
   }
 
-  /* ---------- 4. Tarjetas que se voltean ---------- */
+  /* 4. Tarjetas */
   document.querySelectorAll(".tarjeta").forEach(function (btn) {
     btn.addEventListener("click", function () {
       var abierta = btn.getAttribute("aria-pressed") === "true";
@@ -88,7 +86,7 @@
     });
   });
 
-  /* ---------- 5. Contador desde una fecha ---------- */
+  /* 5. Contador */
   var contador = document.querySelector(".contador");
   if (contador) {
     var inicio = new Date(contador.dataset.fecha);
@@ -113,7 +111,7 @@
     }
   }
 
-  /* ---------- 6. Sorpresa + confeti ---------- */
+  /* 6. Sorpresa yconfeti */
   var btn = document.getElementById("btn-sorpresa");
   var premio = document.getElementById("premio");
   var canvas = document.getElementById("confeti");
@@ -155,8 +153,8 @@
     piezas = piezas.filter(function (p) { return p.y < window.innerHeight + 30 && p.vida < 260; });
     piezas.forEach(function (p) {
       p.vida++;
-      p.vy += 0.22;          // gravedad
-      p.vx *= 0.992;         // rozamiento con el aire
+      p.vy += 0.22;          // g
+      p.vx *= 0.992;         // aire
       p.x += p.vx;
       p.y += p.vy;
       p.rot += p.vr;
@@ -188,7 +186,7 @@
     });
   }
 
-  /* ---------- 7. Visor de fotos (para cuando agregues la galería) ---------- */
+  /* V */
   var visor = document.getElementById("visor");
   if (visor && typeof visor.showModal === "function") {
     var imgVisor = visor.querySelector("img");
@@ -203,6 +201,6 @@
       visor.showModal();
     });
     visor.querySelector(".visor__cerrar").addEventListener("click", function () { visor.close(); });
-    visor.addEventListener("click", function (e) { if (e.target === visor) visor.close(); }); // clic afuera
+    visor.addEventListener("click", function (e) { if (e.target === visor) visor.close(); }); //c...
   }
 })();
