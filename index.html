@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<!-- Puntos de navegación (lado derecho) -->
+<!--  -->
 <nav class="puntos" aria-label="Ir a una pantalla" data-tone="dark">
   <a href="#portada" aria-label="Portada" title="Portada"></a>
   <a href="#historia" aria-label="Línea de tiempo" title="Línea de tiempo"></a>
@@ -24,11 +24,11 @@
 
 <main>
 
-  <!-- ============ 1. PORTADA ============ -->
+  <!-- 1. PORTADA -->
   <section id="portada" class="panel panel--portada" data-tone="dark" aria-labelledby="titulo-portada">
     <div class="estrellas" aria-hidden="true"></div>
 
-    <!-- Eclipse lunar + peluche de Itachi (debajo de la luna) -->
+    <!-- Eclipse -->
     <div class="portada__arte" aria-hidden="true">
       <img class="luna" src="img/luna-eclipse.png" alt="">
       <img class="peluche" src="img/itachi.png" alt="">
@@ -46,7 +46,7 @@
     </a>
   </section>
 
-  <!-- ============ 2. LÍNEA DE TIEMPO ============ -->
+  <!-- 2. LÍNEA DE TIEMPO -->
   <section id="historia" class="panel" data-tone="dark" aria-labelledby="titulo-historia">
     <h2 id="titulo-historia">Recuerdos que tengo contigo que quiero agradecer</h2>
 
@@ -88,7 +88,7 @@
     </div>
   </section>
 
-  <!-- ============ 3. TARJETAS ============ -->
+  <!--3. TARJETAS-->
   <section id="razones" class="panel" data-tone="dark" aria-labelledby="titulo-razones">
     <img class="mulan" src="img/mulan.png" alt="" aria-hidden="true">
 
@@ -137,7 +137,7 @@
     </div>
   </section>
 
-  <!-- ============ 4. CONTADOR ============ -->
+  <!--4. CONTADOR -->
   <section id="tiempo" class="panel" data-tone="dark" aria-labelledby="titulo-tiempo">
     <div class="tiempo__contenido">
       <h2 id="titulo-tiempo">Desde que nos conocimos han pasado (creo xd)</h2>
@@ -155,7 +155,7 @@
     <img class="flint" src="img/flint.png" alt="" aria-hidden="true">
   </section>
 
-  <!-- ============ 5. CARTA ============ -->
+  <!--5. CARTA -->
   <section id="carta" class="panel" data-tone="light" aria-labelledby="titulo-carta">
     <article class="carta">
       <h2 id="titulo-carta">FELIZ CUMPLEAÑOS N° ¿? (no me dijiste jajaja, pero creo que es N° 21)</h2>
@@ -187,7 +187,7 @@
     <img class="mushu" src="img/mushu.png" alt="" aria-hidden="true">
   </section>
 
-  <!-- ============ 6. SORPRESA ============ -->
+  <!-- 6. SORPRESA -->
   <section id="sorpresa" class="panel panel--sorpresa" data-tone="light" aria-labelledby="titulo-sorpresa">
     <div class="sol" aria-hidden="true"></div>
     <img class="lotso" src="img/lotso.png" alt="" aria-hidden="true">
@@ -206,14 +206,14 @@
 
 </main>
 
-<!-- Visor de fotos ampliadas (para cuando agregues la galería: <img data-ampliar ...>) -->
+<!-- V -->
 <dialog id="visor" aria-label="Foto ampliada">
   <img src="" alt="">
   <p></p>
   <button type="button" class="visor__cerrar" aria-label="Cerrar">&times;</button>
 </dialog>
 
-<!-- Lienzo del confeti -->
+<!-- C -->
 <canvas id="confeti" aria-hidden="true"></canvas>
 
 <script src="script.js"></script>
