@@ -1,7 +1,4 @@
-/* =========================================================
-   Página de regalo — estilos
-   Fuentes: Bricolage Grotesque (texto) + Caveat (a mano)
-   ========================================================= */
+/* Página de regalo*/
 
 :root {
   --noche: #171A33;
@@ -42,7 +39,7 @@ h1, h2 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; }
 
 :focus-visible { outline: 3px solid var(--oro); outline-offset: 3px; }
 
-/* ---------- Paneles ---------- */
+/* Paneles */
 .panel {
   position: relative;
   min-height: 100vh;
@@ -68,7 +65,7 @@ h1, h2 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; }
   line-height: 1.4;
 }
 
-/* ---------- Puntos de navegación ---------- */
+/* Puntos de navegación */
 .puntos {
   position: fixed;
   right: clamp(.6rem, 1.6vw, 1.5rem);
@@ -97,11 +94,9 @@ h1, h2 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; }
 .puntos a:hover { opacity: 1; transform: scale(1.25); }
 .puntos a[aria-current="true"] { background: currentColor; opacity: 1; transform: scale(1.2); }
 
-/* =========================================================
-   1. PORTADA — negro → vino tinto, eclipse y Itachi
-   ========================================================= */
+/* 1. PORTADA — negro → vino tinto, eclipse y Itachi */
 .panel--portada {
-  /* Vino tinto de base y, encima, negro que se desvanece hacia abajo */
+  /* Fondo 1*/
   background:
     linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, .82) 22%, rgba(0, 0, 0, 0) 100%),
     var(--vino);
@@ -153,7 +148,6 @@ h1, h2 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; }
   color: rgba(255, 255, 255, .82);
 }
 
-/* letras del título (las crea script.js) */
 .pal { display: inline-block; white-space: nowrap; }
 .let {
   display: inline-block;
@@ -174,9 +168,7 @@ h1, h2 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; }
 }
 @keyframes rebote { 50% { transform: translateY(6px); } }
 
-/* =========================================================
-   2. LÍNEA DE TIEMPO — Luffy sentado sobre la línea
-   ========================================================= */
+/* 2. LÍNEA DE TIEMPO */
 #historia {
   background: linear-gradient(160deg, #182a63 0%, #1b5288 52%, #176180 100%);
 }
@@ -245,9 +237,7 @@ h1, h2 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; }
   color: rgba(255, 255, 255, .85);
 }
 
-/* =========================================================
-   3. TARJETAS — Mulán con fondo degradado
-   ========================================================= */
+/* 3. TARJETAS */
 #razones {
   background:
     radial-gradient(ellipse at 15% 82%, rgba(255, 224, 208, .42), transparent 44%),
@@ -330,9 +320,7 @@ h1, h2 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; }
   border: 1px solid rgba(255, 255, 255, .8);
 }
 
-/* =========================================================
-   4. CONTADOR — cielo con nubes y Flint Lockwood
-   ========================================================= */
+/* 4. CONTADOR */
 #tiempo {
   background:
     radial-gradient(circle at 78% 26%, rgba(255, 244, 190, .6), transparent 38%),
@@ -340,7 +328,7 @@ h1, h2 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; }
   text-shadow: 0 1px 14px rgba(8, 40, 95, .35);
 }
 
-/* banco de nubes en la parte baja */
+/* Nubes */
 #tiempo::before {
   content: "";
   position: absolute;
@@ -359,7 +347,7 @@ h1, h2 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; }
     radial-gradient(circle at 98% 100%, #fff 0 14%, transparent 14.4%);
   opacity: .92;
 }
-/* nubes sueltas arriba */
+/*Nubes arr*/
 #tiempo::after {
   content: "";
   position: absolute;
@@ -411,9 +399,7 @@ h1, h2 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; }
   pointer-events: none;
 }
 
-/* =========================================================
-   5. CARTA — fondo cálido y Mushu a la derecha
-   ========================================================= */
+/* 5. CARTA */
 #carta {
   color: var(--tinta);
   background:
@@ -460,9 +446,7 @@ h1, h2 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; }
   pointer-events: none;
 }
 
-/* =========================================================
-   6. SORPRESA — rosa fresa para Lotso
-   ========================================================= */
+/* 6. SORPRESA */
 #sorpresa {
   color: var(--ciruela);
   align-items: center;
@@ -534,7 +518,7 @@ h1, h2 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; }
 .cupon__texto  { font-family: var(--mano); font-weight: 700; font-size: 1.7rem; line-height: 1.1; }
 .cupon__nota   { font-size: clamp(1.7rem, 3.6vw, 2.6rem); font-weight: 800; letter-spacing: -.02em; line-height: 1.05; }
 
-/* ---------- Confeti y visor ---------- */
+/* Confeti */
 #confeti {
   position: fixed;
   inset: 0;
@@ -568,9 +552,7 @@ h1, h2 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; }
   color: inherit;
 }
 
-/* =========================================================
-   Responsive
-   ========================================================= */
+/* RRRR */
 @media (max-width: 1100px) {
   .linea { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .carta { max-width: none; }
@@ -588,14 +570,14 @@ h1, h2 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; }
   .panel { padding-right: var(--pad-x); }
   .puntos { gap: .55rem; }
 
-  /* Portada: el arte arriba a la derecha y el texto abajo */
+  /* Portada */
   .panel--portada { justify-content: flex-end; padding-bottom: 5rem; }
   .portada__arte { right: 1.25rem; top: 1.25rem; }
   .luna { width: 84px; }
   .peluche { height: 150px; }
   .portada__contenido h1 { font-size: clamp(2rem, 9vw, 2.8rem); }
 
-  /* Línea de tiempo vertical */
+  /*Línea de tiemppo*/
   #historia h2 { margin-bottom: 1rem; }
   .luffy { position: relative; right: auto; bottom: auto; display: block; height: 130px; margin: 0 0 .5rem auto; }
   .linea { grid-template-columns: 1fr; row-gap: 0; }
