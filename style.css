@@ -1,4 +1,4 @@
-/* Página de regalo*/
+/* PPP */
 
 :root {
   --noche: #171A33;
@@ -39,7 +39,7 @@ h1, h2 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; }
 
 :focus-visible { outline: 3px solid var(--oro); outline-offset: 3px; }
 
-/* Paneles */
+/* Paneleess */
 .panel {
   position: relative;
   min-height: 100vh;
@@ -65,7 +65,7 @@ h1, h2 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; }
   line-height: 1.4;
 }
 
-/* Puntos de navegación */
+/* Navegación */
 .puntos {
   position: fixed;
   right: clamp(.6rem, 1.6vw, 1.5rem);
@@ -94,7 +94,7 @@ h1, h2 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; }
 .puntos a:hover { opacity: 1; transform: scale(1.25); }
 .puntos a[aria-current="true"] { background: currentColor; opacity: 1; transform: scale(1.2); }
 
-/* 1. PORTADA — negro → vino tinto, eclipse y Itachi */
+/* 1. PORTADA */
 .panel--portada {
   /* Fondo 1*/
   background:
