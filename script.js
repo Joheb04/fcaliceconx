@@ -1,11 +1,11 @@
-/* PPP */
+/* Página */
 (function () {
   "use strict";
 
   document.documentElement.classList.add("js");
   var reducirMovimiento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* 1. Portada */
+  /* 1. Estrellas del primer viewport*/
   var cielo = document.querySelector(".estrellas");
   if (cielo) {
     var cantidad = window.innerWidth < 760 ? 60 : 130;
@@ -24,7 +24,7 @@
     cielo.appendChild(frag);
   }
 
-  /* 2. Título */
+  /* 2. Título letra por letra */
   document.querySelectorAll("[data-letras]").forEach(function (el) {
     var texto = el.textContent.trim();
     el.setAttribute("aria-label", texto);
@@ -46,7 +46,7 @@
     });
   });
 
-  /* 3. Navegación */
+  /* 3. Puntos de navegación + aparición de paneles*/
   var nav = document.querySelector(".puntos");
   var enlaces = nav ? Array.from(nav.querySelectorAll("a")) : [];
   var paneles = Array.from(document.querySelectorAll(".panel"));
@@ -60,12 +60,12 @@
   }
 
   if ("IntersectionObserver" in window) {
-    // Panel..
+    // El panel que cruza la mitad de la pantalla es el activo
     var ioNav = new IntersectionObserver(function (entradas) {
       entradas.forEach(function (e) { if (e.isIntersecting) marcarActivo(e.target); });
     }, { rootMargin: "-50% 0px -50% 0px", threshold: 0 });
 
-    // para la línea de tiempo
+    // Los paneles se marcan como visibles la primera vez que se ven (para la línea de tiempo)
     var ioVer = new IntersectionObserver(function (entradas) {
       entradas.forEach(function (e) {
         if (e.isIntersecting) { e.target.classList.add("is-visible"); ioVer.unobserve(e.target); }
@@ -78,7 +78,7 @@
     if (paneles[0]) marcarActivo(paneles[0]);
   }
 
-  /* 4. Tarjetas */
+  /* 4. Notas con tarjetas que se voltean */
   document.querySelectorAll(".tarjeta").forEach(function (btn) {
     btn.addEventListener("click", function () {
       var abierta = btn.getAttribute("aria-pressed") === "true";
@@ -86,7 +86,7 @@
     });
   });
 
-  /* 5. Contador */
+  /* 5. Contador desde una fecha */
   var contador = document.querySelector(".contador");
   if (contador) {
     var inicio = new Date(contador.dataset.fecha);
@@ -111,7 +111,7 @@
     }
   }
 
-  /* 6. Sorpresa yconfeti */
+  /* 6. Sorpresa con su lotso y confeti */
   var btn = document.getElementById("btn-sorpresa");
   var premio = document.getElementById("premio");
   var canvas = document.getElementById("confeti");
@@ -154,7 +154,7 @@
     piezas.forEach(function (p) {
       p.vida++;
       p.vy += 0.22;          // g
-      p.vx *= 0.992;         // aire
+      p.vx *= 0.992;         // fr aire
       p.x += p.vx;
       p.y += p.vy;
       p.rot += p.vr;
@@ -186,7 +186,7 @@
     });
   }
 
-  /* V */
+  /* 7. V*/
   var visor = document.getElementById("visor");
   if (visor && typeof visor.showModal === "function") {
     var imgVisor = visor.querySelector("img");
@@ -201,6 +201,6 @@
       visor.showModal();
     });
     visor.querySelector(".visor__cerrar").addEventListener("click", function () { visor.close(); });
-    visor.addEventListener("click", function (e) { if (e.target === visor) visor.close(); }); //c...
+    visor.addEventListener("click", function (e) { if (e.target === visor) visor.close(); }); // clic afuera
   }
 })();

@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<!--  -->
+<!--Puntos de navegación -->
 <nav class="puntos" aria-label="Ir a una pantalla" data-tone="dark">
   <a href="#portada" aria-label="Portada" title="Portada"></a>
   <a href="#historia" aria-label="Línea de tiempo" title="Línea de tiempo"></a>
@@ -20,15 +20,16 @@
   <a href="#tiempo" aria-label="Contador" title="Contador"></a>
   <a href="#carta" aria-label="Carta" title="Carta"></a>
   <a href="#sorpresa" aria-label="Sorpresa" title="Sorpresa"></a>
+  <a href="#losiento" aria-label="Sorpresa" title="Sorpresa"></a>
 </nav>
 
 <main>
 
-  <!-- 1. PORTADA -->
+  <!-- 1. Primer viewport -->
   <section id="portada" class="panel panel--portada" data-tone="dark" aria-labelledby="titulo-portada">
     <div class="estrellas" aria-hidden="true"></div>
 
-    <!-- Eclipse -->
+    <!-- Eclipse lunar con Itachi -->
     <div class="portada__arte" aria-hidden="true">
       <img class="luna" src="img/luna-eclipse.png" alt="">
       <img class="peluche" src="img/itachi.png" alt="">
@@ -37,6 +38,7 @@
     <div class="portada__contenido">
       <h1 id="titulo-portada" data-letras>Porque sé que este es un día especial para ti, te hice esto</h1>
       <p class="portada__sub">Baja con calma muñeca. De: Jammes (H.T.). (Posdata: Tú dijiste sean creativos jaja)</p>
+      <p class="portada__sub">(Posdata 2: Si llegas a ver esto, ve al último)</p>
     </div>
 
     <a class="bajar" href="#historia" aria-label="Ir a la siguiente pantalla">
@@ -46,7 +48,7 @@
     </a>
   </section>
 
-  <!-- 2. LÍNEA DE TIEMPO -->
+  <!-- 2. Tiempo conociéndonos  -->
   <section id="historia" class="panel" data-tone="dark" aria-labelledby="titulo-historia">
     <h2 id="titulo-historia">Recuerdos que tengo contigo que quiero agradecer</h2>
 
@@ -88,7 +90,7 @@
     </div>
   </section>
 
-  <!--3. TARJETAS-->
+  <!-- 3. Notas con tarjetas -->
   <section id="razones" class="panel" data-tone="dark" aria-labelledby="titulo-razones">
     <img class="mulan" src="img/mulan.png" alt="" aria-hidden="true">
 
@@ -137,7 +139,7 @@
     </div>
   </section>
 
-  <!--4. CONTADOR -->
+  <!-- 4. Contador-->
   <section id="tiempo" class="panel" data-tone="dark" aria-labelledby="titulo-tiempo">
     <div class="tiempo__contenido">
       <h2 id="titulo-tiempo">Desde que nos conocimos han pasado (creo xd)</h2>
@@ -155,10 +157,10 @@
     <img class="flint" src="img/flint.png" alt="" aria-hidden="true">
   </section>
 
-  <!--5. CARTA -->
+  <!-- 5. Carta de cumpleaños -->
   <section id="carta" class="panel" data-tone="light" aria-labelledby="titulo-carta">
     <article class="carta">
-      <h2 id="titulo-carta">FELIZ CUMPLEAÑOS N° ¿? (no me dijiste jajaja, pero creo que es N° 21)</h2>
+      <h2 id="titulo-carta">FELIZ CUMPLEAÑOS N° 23 (Ahora ya lo sé 😌)</h2>
 
       <p class="carta__saludo">Mi psicóloga favorita,
         mi masoquista favorita (masoquista moderada),
@@ -187,7 +189,7 @@
     <img class="mushu" src="img/mushu.png" alt="" aria-hidden="true">
   </section>
 
-  <!-- 6. SORPRESA -->
+  <!-- 6. Sopresa con su Lotso jaja -->
   <section id="sorpresa" class="panel panel--sorpresa" data-tone="light" aria-labelledby="titulo-sorpresa">
     <div class="sol" aria-hidden="true"></div>
     <img class="lotso" src="img/lotso.png" alt="" aria-hidden="true">
@@ -200,10 +202,36 @@
         <p class="cupon__titulo">GRACIAS</p>
         <p class="cupon__texto">por</p>
         <p class="cupon__nota">Existir</p>
+        <p class="cupon__nota"></p>
+      </div>
+            <div id="premio" class="cupon" tabindex="-1" hidden>
+        <p class="cupon__titulo">GRasdfad</p>
+        <p class="cupon__texto">por</p>
+        <p class="cupon__nota">Existir</p>
+        <p class="cupon__nota"></p>
       </div>
     </div>
   </section>
 
+    <!-- 7. Lo siento -->
+  <section id="losiento" class="panel" data-tone="light" aria-labelledby="titulo-carta">
+    <article class="carta2">
+      <h2 id="titulo-carta"> Mi Alexa...</h2>
+
+      <p class="carta__saludo2"> Sé que tienes tus razones para estar molesta</p>
+
+      <p> Y no voy a excusarme por no estar ese día, pero al menos quiero que sepas que lo siento, y perdón también por no haberte escrito antes, hace poco que me desocupo, no quiero que penses que no me importas, porque sí me importas..</p>
+
+      <p class="carta__gracias2"></p>
+      <p></p>
+      <p></p>
+
+      <p class="firma2">En serio, lo siento bonita...</p>
+      <p class="carta__saludo3"> (Un Wall-e de disculpas :/)</p>
+    </article>
+
+    <img class="walle" src="img/wall e.png" alt="" aria-hidden="true">
+  </section>
 </main>
 
 <!-- V -->
@@ -213,9 +241,9 @@
   <button type="button" class="visor__cerrar" aria-label="Cerrar">&times;</button>
 </dialog>
 
-<!-- C -->
+<!-- Confeti -->
 <canvas id="confeti" aria-hidden="true"></canvas>
 
 <script src="script.js"></script>
 </body>
-</html> 
+</html>

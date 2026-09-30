@@ -1,4 +1,4 @@
-/* PPP */
+/* Página — estilos */
 
 :root {
   --noche: #171A33;
@@ -39,7 +39,7 @@ h1, h2 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; }
 
 :focus-visible { outline: 3px solid var(--oro); outline-offset: 3px; }
 
-/* Paneleess */
+/* Paneles*/
 .panel {
   position: relative;
   min-height: 100vh;
@@ -65,7 +65,7 @@ h1, h2 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; }
   line-height: 1.4;
 }
 
-/* Navegación */
+/* Puntos de navegación */
 .puntos {
   position: fixed;
   right: clamp(.6rem, 1.6vw, 1.5rem);
@@ -94,9 +94,9 @@ h1, h2 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; }
 .puntos a:hover { opacity: 1; transform: scale(1.25); }
 .puntos a[aria-current="true"] { background: currentColor; opacity: 1; transform: scale(1.2); }
 
-/* 1. PORTADA */
+/* 1. Primer viewport — negro, vino tinto, eclipse e Itachi */
 .panel--portada {
-  /* Fondo 1*/
+  /* Vino tinto de base y, encima, negro que se desvanece hacia abajo */
   background:
     linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, .82) 22%, rgba(0, 0, 0, 0) 100%),
     var(--vino);
@@ -148,6 +148,7 @@ h1, h2 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; }
   color: rgba(255, 255, 255, .82);
 }
 
+/* letras del título (las crea script.js) */
 .pal { display: inline-block; white-space: nowrap; }
 .let {
   display: inline-block;
@@ -168,7 +169,7 @@ h1, h2 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; }
 }
 @keyframes rebote { 50% { transform: translateY(6px); } }
 
-/* 2. LÍNEA DE TIEMPO */
+/* 2. LÍNEA DE TIEMPO — Luffy sentado sobre la línea */
 #historia {
   background: linear-gradient(160deg, #182a63 0%, #1b5288 52%, #176180 100%);
 }
@@ -237,7 +238,7 @@ h1, h2 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; }
   color: rgba(255, 255, 255, .85);
 }
 
-/* 3. TARJETAS */
+/* 3. Notas con tarjetas — Mulán */
 #razones {
   background:
     radial-gradient(ellipse at 15% 82%, rgba(255, 224, 208, .42), transparent 44%),
@@ -320,7 +321,7 @@ h1, h2 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; }
   border: 1px solid rgba(255, 255, 255, .8);
 }
 
-/* 4. CONTADOR */
+/* 4. Contador — Flint Lockwood */
 #tiempo {
   background:
     radial-gradient(circle at 78% 26%, rgba(255, 244, 190, .6), transparent 38%),
@@ -328,7 +329,7 @@ h1, h2 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; }
   text-shadow: 0 1px 14px rgba(8, 40, 95, .35);
 }
 
-/* Nubes */
+/* Nubes en la parte baja */
 #tiempo::before {
   content: "";
   position: absolute;
@@ -347,7 +348,7 @@ h1, h2 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; }
     radial-gradient(circle at 98% 100%, #fff 0 14%, transparent 14.4%);
   opacity: .92;
 }
-/*Nubes arr*/
+/* Nubes arriba */
 #tiempo::after {
   content: "";
   position: absolute;
@@ -399,7 +400,7 @@ h1, h2 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; }
   pointer-events: none;
 }
 
-/* 5. CARTA */
+/* 5. CARTA — fondo cálido y Mushu a la derecha */
 #carta {
   color: var(--tinta);
   background:
@@ -446,7 +447,7 @@ h1, h2 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; }
   pointer-events: none;
 }
 
-/* 6. SORPRESA */
+/* 6. Sorpresa con su Lotso */
 #sorpresa {
   color: var(--ciruela);
   align-items: center;
@@ -518,7 +519,60 @@ h1, h2 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; }
 .cupon__texto  { font-family: var(--mano); font-weight: 700; font-size: 1.7rem; line-height: 1.1; }
 .cupon__nota   { font-size: clamp(1.7rem, 3.6vw, 2.6rem); font-weight: 800; letter-spacing: -.02em; line-height: 1.05; }
 
-/* Confeti */
+/* 7. Lo siento - WALL E */
+#losiento {
+  color: #fff;
+  background:
+    radial-gradient(circle at 80% 56%, #80652c 0%, rgba(128, 101, 44, 0) 46%),
+    linear-gradient(120deg, #1F211F 0%, #34332C 62%, #4A402C 100%);
+  text-shadow: none;
+}
+
+.carta2 { position: relative; z-index: 1; max-width: min(40rem, 100%); }
+.carta2 h2 {
+  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+  color: #E5B83F;
+  margin-bottom: clamp(.9rem, 2vh, 1.4rem);
+}
+.carta2 p {
+  font-size: clamp(.9rem, 1.05vw, 1.08rem);
+  line-height: 1.55;
+  margin-top: .75rem;
+}
+.carta__saludo2 {
+  font-family: var(--mano);
+  font-weight: 700;
+  font-size: clamp(1.25rem, 1.7vw, 1.6rem) !important;
+  line-height: 1.15 !important;
+  color: #F7E7C1;
+}
+.carta__saludo3 {
+  font-family: var(--mano);
+  font-weight: 700;
+  font-size: clamp(1.1rem, 1.5vw, 1.4rem) !important;
+  line-height: 1.15 !important;
+  color: #F7E7C1;
+}
+.carta__gracias2 { margin-top: 1.1rem !important; font-weight: 700; }
+.firma2 {
+  margin-top: 1.25rem !important;
+  font-family: var(--mano);
+  font-weight: 700;
+  font-size: clamp(1.4rem, 2vw, 1.9rem) !important;
+  color: #D4C5A8;
+}
+
+.walle {
+  position: absolute;
+  z-index: 0;
+  right: clamp(1.5rem, 8vw, 9rem);
+  bottom: 0;
+  height: min(64%, 440px);
+  width: auto;
+  filter: drop-shadow(0 12px 20px rgba(110, 20, 70, .3));
+  pointer-events: none;
+}
+/* Confeti y visor*/
 #confeti {
   position: fixed;
   inset: 0;
@@ -552,7 +606,7 @@ h1, h2 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; }
   color: inherit;
 }
 
-/* RRRR */
+/* Res */
 @media (max-width: 1100px) {
   .linea { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .carta { max-width: none; }
@@ -570,21 +624,21 @@ h1, h2 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; }
   .panel { padding-right: var(--pad-x); }
   .puntos { gap: .55rem; }
 
-  /* Portada */
+  /* Portada: imágenes arriba a la derecha y el texto abajo */
   .panel--portada { justify-content: flex-end; padding-bottom: 5rem; }
   .portada__arte { right: 1.25rem; top: 1.25rem; }
   .luna { width: 84px; }
   .peluche { height: 150px; }
   .portada__contenido h1 { font-size: clamp(2rem, 9vw, 2.8rem); }
 
-  /*Línea de tiemppo*/
+  /* Línea de tiempo vertical */
   #historia h2 { margin-bottom: 1rem; }
   .luffy { position: relative; right: auto; bottom: auto; display: block; height: 130px; margin: 0 0 .5rem auto; }
   .linea { grid-template-columns: 1fr; row-gap: 0; }
   .hito { padding: 0 0 1.5rem 1.5rem; border-top: 0; border-left: 1px solid rgba(255, 255, 255, .38); }
   .hito::before { top: .25rem; left: -6px; }
 
-  /* Tarjetas */
+  /* Notas con tarjetas */
   .mulan { left: auto; right: 1rem; top: 1.25rem; bottom: auto; height: 120px; }
   .razones__contenido { margin-left: 0; padding-top: 2rem; }
   .razones__contenido h2 { max-width: calc(100% - 90px); }
@@ -600,6 +654,11 @@ h1, h2 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; }
   /* Sorpresa */
   #sorpresa { justify-content: flex-start; padding-top: 22vh; padding-bottom: 14rem; }
   .lotso { right: 50%; translate: 50% 0; height: 200px; }
+  .sol { right: 50%; translate: 50% 0; bottom: -20vw; width: 90vw; }
+
+  /* Lo siento */
+  #sorpresa { justify-content: flex-start; padding-top: 22vh; padding-bottom: 14rem; }
+  .walle { right: 50%; translate: 50% 0; height: 200px; }
   .sol { right: 50%; translate: 50% 0; bottom: -20vw; width: 90vw; }
 }
 
