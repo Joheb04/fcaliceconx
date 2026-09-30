@@ -204,3 +204,4 @@
     visor.addEventListener("click", function (e) { if (e.target === visor) visor.close(); }); // clic afuera
   }
 })();
+
