@@ -5,6 +5,128 @@
   document.documentElement.classList.add("js");
   var reducirMovimiento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+/*    -----------------------  Música    -----------------------  */
+(function () {
+  //
+  if (window.__reproductorIniciado) return;
+  window.__reproductorIniciado = true;
+
+  const musica = document.getElementById('musica');
+  const nombre = document.getElementById('nombre-cancion');
+  const progreso = document.getElementById('progreso');
+  const volumen = document.getElementById('volumen');
+  const iconoVolumen = document.getElementById('icono-volumen');
+  const btnSiguiente = document.getElementById('btn-siguiente');
+  const btnAnterior = document.getElementById('btn-anterior');
+
+  // Clonar el botón play
+  const playViejo = document.getElementById('btn-play');
+  const btnPlay = playViejo.cloneNode(true);
+  playViejo.replaceWith(btnPlay);
+
+  // Iconos SVG
+  const ICONO_PLAY = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+  const ICONO_PAUSA = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>';
+  const ICONO_VOL = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 8v8a4.5 4.5 0 0 0 2.5-4z"/></svg>';
+  const ICONO_MUTE = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M16 9l5 6m0-6l-5 6" stroke="currentColor" stroke-width="2" fill="none"/></svg>';
+
+  btnPlay.innerHTML = ICONO_PLAY;
+  iconoVolumen.innerHTML = ICONO_VOL;
+
+  // Lista de canciones
+  const canciones = [
+    { titulo: 'Creep - Radiohead', archivo: 'audio/Creep - Radiohead.mp3' },
+    { titulo: 'Gangnam Style (강남스타일) - PSY', archivo: 'audio/Gangnam Style (강남스타일) - PSY.mp3' },
+    { titulo: 'How It Ends - DeVotchKa', archivo: 'audio/How It Ends - DeVotchKa.mp3' },
+    { titulo: 'Lambada - Original Version 1989 - Kaoma', archivo: 'audio/Lambada - Original Version 1989 - Kaoma.mp3' },
+    { titulo: 'Lo Que Siento - Cuco', archivo: 'audio/Lo Que Siento - Cuco.mp3' },
+    { titulo: 'On the Sea - Beach House', archivo: 'audio/On the Sea - Beach House.mp3' },
+    { titulo: 'Saturn - Sleeping At Last', archivo: 'audio/Saturn - Sleeping At Last.mp3' },
+    { titulo: 'La Que Me Gusta (Versión Acústica) - Los Amigos Invisibles', archivo: 'audio/La Que Me Gusta (Versión Acústica) - Los Amigos Invisibles.mp3' },
+  ];
+
+  let actual = 0;
+  musica.volume = 0.5;
+
+  function cargar(indice) {
+    actual = indice;
+    musica.src = canciones[actual].archivo;
+    nombre.textContent = canciones[actual].titulo;
+    progreso.value = 0;
+  }
+
+  function reproducir() {
+    const promesa = musica.play();
+    if (promesa !== undefined) {
+      promesa.catch((e) => console.error('No se pudo reproducir:', e));
+    }
+  }
+
+  // Play / Pausa
+  btnPlay.addEventListener('click', () => {
+    if (musica.paused) {
+      reproducir();
+    } else {
+      musica.pause();
+    }
+  });
+
+  // El icono que sigue al audio
+  musica.addEventListener('play', () => { btnPlay.innerHTML = ICONO_PAUSA; });
+  musica.addEventListener('pause', () => { btnPlay.innerHTML = ICONO_PLAY; });
+
+  musica.addEventListener('error', () => {
+    nombre.textContent = 'No se encontró el audio';
+    btnPlay.innerHTML = ICONO_PLAY;
+    console.error('Error cargando:', musica.src);
+  });
+
+  // Siguiente / Anterior
+  btnSiguiente.addEventListener('click', () => {
+    cargar((actual + 1) % canciones.length);
+    reproducir();
+  });
+
+  btnAnterior.addEventListener('click', () => {
+    cargar((actual - 1 + canciones.length) % canciones.length);
+    reproducir();
+  });
+
+  // Pasa a la siguiente al terminar
+  musica.addEventListener('ended', () => {
+    cargar((actual + 1) % canciones.length);
+    reproducir();
+  });
+
+  // Volumen
+  volumen.addEventListener('input', () => {
+    musica.muted = false;
+    musica.volume = volumen.value;
+    iconoVolumen.innerHTML = musica.volume == 0 ? ICONO_MUTE : ICONO_VOL;
+  });
+
+  iconoVolumen.addEventListener('click', () => {
+    musica.muted = !musica.muted;
+    iconoVolumen.innerHTML = musica.muted ? ICONO_MUTE : ICONO_VOL;
+  });
+
+  // Barra de progreso
+  musica.addEventListener('timeupdate', () => {
+    if (musica.duration) {
+      progreso.value = (musica.currentTime / musica.duration) * 100;
+    }
+  });
+
+  progreso.addEventListener('input', () => {
+    if (musica.duration) {
+      musica.currentTime = (progreso.value / 100) * musica.duration;
+    }
+  });
+
+  cargar(0);
+})();
+/*    -----------------------  Termina js de música    -----------------------  */
+
   /* 1. Estrellas del primer viewport*/
   var cielo = document.querySelector(".estrellas");
   if (cielo) {
@@ -204,4 +326,3 @@
     visor.addEventListener("click", function (e) { if (e.target === visor) visor.close(); }); // clic afuera
   }
 })();
-

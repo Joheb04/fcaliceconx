@@ -94,6 +94,96 @@ h1, h2 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; }
 .puntos a:hover { opacity: 1; transform: scale(1.25); }
 .puntos a[aria-current="true"] { background: currentColor; opacity: 1; transform: scale(1.2); }
 
+/*    -----------------------  Música    -----------------------  */
+#reproductor {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 90vw;
+  padding: 8px 14px;
+  border-radius: 30px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+}
+
+#reproductor button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: #f3e9d2;
+  cursor: pointer;
+  transition: color 0.2s, transform 0.2s;
+}
+
+#reproductor button:hover {
+  color: #e8b73a;
+  transform: scale(1.1);
+}
+
+#reproductor button svg {
+  width: 22px;
+  height: 22px;
+  pointer-events: none;
+}
+
+/* Botón principal: Play y pause */
+#reproductor #btn-play {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #e8b73a;
+  color: #1e1e1e;
+}
+
+#reproductor #btn-play:hover {
+  background: #f5c94d;
+  color: #1e1e1e;
+}
+
+#nombre-cancion {
+  color: #e8b73a;
+  font-size: 0.85rem;
+  max-width: 140px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#reproductor input[type="range"] {
+  cursor: pointer;
+  accent-color: #e8b73a;
+}
+
+#progreso {
+  width: 120px;
+}
+
+#volumen {
+  width: 70px;
+}
+
+@media (max-width: 600px) {
+  #volumen,
+  #icono-volumen,
+  #nombre-cancion {
+    display: none;
+  }
+  #progreso {
+    width: 80px;
+  }
+}
+/*    -----------------------  Termina css de música    -----------------------  */
+
 /* 1. Primer viewport — negro, vino tinto, eclipse e Itachi */
 .panel--portada {
   /* Vino tinto de base y, encima, negro que se desvanece hacia abajo */
